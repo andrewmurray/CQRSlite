@@ -16,7 +16,7 @@ namespace CQRSCode.WriteModel
             _publisher = publisher;
         }
 
-        public async Task Save(IEnumerable<IEvent> events)
+        public async Task Save(Guid aggregateId, int? expectedVersion, IEnumerable<IEvent> events)
         {
             foreach (var @event in events)
             {

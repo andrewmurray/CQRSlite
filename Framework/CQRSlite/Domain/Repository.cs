@@ -32,7 +32,7 @@ namespace CQRSlite.Domain
             }
 
             var changes = aggregate.FlushUncommitedChanges();
-            await _eventStore.Save(changes);
+            await _eventStore.Save(aggregate.Id, expectedVersion, changes);
 
             if (_publisher != null)
             {

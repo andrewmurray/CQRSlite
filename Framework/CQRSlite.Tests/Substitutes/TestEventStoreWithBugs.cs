@@ -7,7 +7,7 @@ namespace CQRSlite.Tests.Substitutes
 {
     public class TestEventStoreWithBugs : IEventStore
     {
-        public Task Save(IEnumerable<IEvent> events)
+        public Task Save(Guid aggregateId, int? expectedVersion, IEnumerable<IEvent> events)
         {
             return Task.CompletedTask;
         }

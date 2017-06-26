@@ -107,7 +107,7 @@ namespace CQRSlite.Tests.Extensions.TestHelpers
 
         public List<IEvent> Events { get; set; }
 
-        public Task Save(IEnumerable<IEvent> events)
+        public Task Save(Guid aggregateId, int? expectedVersion, IEnumerable<IEvent> events)
         {
             Events.AddRange(events);
             return Task.WhenAll(events.Select(evt =>_publisher.Publish(evt)));

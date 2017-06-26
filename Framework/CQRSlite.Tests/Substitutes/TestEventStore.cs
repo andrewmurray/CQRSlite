@@ -31,7 +31,7 @@ namespace CQRSlite.Tests.Substitutes
             }.Where(x => x.Version > version));
         }
 
-        public Task Save(IEnumerable<IEvent> events)
+        public Task Save(Guid aggregateId, int? expectedVersion, IEnumerable<IEvent> events)
         {
             SavedEvents.AddRange(events);
             return Task.CompletedTask;
